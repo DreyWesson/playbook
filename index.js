@@ -12,6 +12,7 @@ async function prependToFile(filePath, data) {
     const existingContent = await fs.readFile(filePath, 'utf8');
     const newContent = data + existingContent;
     await fs.writeFile(filePath, newContent, 'utf8');
+    await filePath.close()
     console.log('Data prepended successfully!');
   } catch (err) {
     console.error('Error prepending data:', err);

@@ -8,10 +8,10 @@ function validateInput(input) {
 
 function executeShellCommand(command, callback) {
   
-  if (!validateInput(command)) {
-    console.error("Invalid command input.");
-    return;
-  }
+  // if (!validateInput(command)) {
+  //   console.error("Invalid command input.");
+  //   return;
+  // }
   
   exec(command, (error, stdout, stderr) => {
     if (error) {
