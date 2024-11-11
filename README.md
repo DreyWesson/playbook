@@ -2,6 +2,18 @@
 
 Playbook CLI is a versatile command processor that allows you to perform various file operations, execute terminal commands, handle math calculations, and make HTTP requests directly from text files. It's like having Postman or Insomnia built into your command line!
 
+## Why You Might Need It
+
+1. Server-Friendly: As a CLI tool, it's perfect for headless server environments where GUI applications aren't practical or available.
+2. API Testing Without GUI: Perform HTTP requests (GET, POST, PUT, PATCH, DELETE) similar to Postman or Insomnia, directly from the command line.
+3. Resource Efficiency: Lightweight Node.js application that consumes fewer system resources compared to full GUI tools.
+4. Scriptable and Versionable: File-based approach allows easy creation, saving, and version control of API tests and other operations.
+5. Easy Installation: Simple to install and use on any system with Node.js, making it ideal for cloud environments.
+6. No GUI Dependency: Perfect for environments where installing GUI applications is impractical or impossible.
+7. All-in-One Tool: Combines HTTP request functionality, file operations, and command execution in a single, lightweight package.
+
+Playbook CLI is especially valuable for developers and administrators working with virtual servers, CI/CD pipelines, or any environment where GUI tools are impractical. It provides a streamlined, efficient way to perform various tasks that would typically require multiple tools or a graphical interface.
+
 ## Installation
 
 ### Local Installation (recommended for command-line usage)
