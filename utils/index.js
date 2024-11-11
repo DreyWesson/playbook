@@ -16,17 +16,31 @@ const isHttpRequest = (request) => {
 function parseHttpRequest(request) {
   const lines = request.split(/\r?\n/);
   const parsedRequests = [];
-  let method,
-    url,
-    protocol = "HTTP/1.1";
+  let method, url, protocol = "HTTP/1.1";
   const headers = {};
   let bodyLines = [];
   let state = "REQUEST_LINE";
   let contentLength = 0;
   let isChunked = false;
+  let isCommentedBlock = false;
 
   for (const line of lines) {
     const trimmedLine = line.trim();
+
+    // Ignore lines starting with '#'
+    if (trimmedLine.startsWith('#')) {
+      continue;
+    }
+
+    // Check if we're exiting a commented block
+    if (isCommentedBlock && !trimmedLine.startsWith('#')) {
+      isCommentedBlock = false;
+    }
+
+    // Skip processing if we're in a commented block
+    if (isCommentedBlock) {
+      continue;
+    }
 
     if (state === "REQUEST_LINE") {
       if (!trimmedLine) continue; // Skip empty lines before request line
@@ -60,9 +74,7 @@ function parseHttpRequest(request) {
         if (contentLength <= 0) {
           state = "END"; // End of body based on Content-Length
         }
-      } else if (
-        /^(GET|POST|PUT|DELETE|PATCH|OPTIONS|HEAD)/.test(trimmedLine)
-      ) {
+      } else if (/^(GET|POST|PUT|DELETE|PATCH|OPTIONS|HEAD)/.test(trimmedLine)) {
         // If we encounter another request line, finalize the current request
         parsedRequests.push({
           method,
