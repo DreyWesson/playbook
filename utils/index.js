@@ -113,30 +113,10 @@ function parseBody(body, headers) {
   return body.trim();
 }
 
-// function printWelcome() {
-//   const { RESET, BOLD, GREEN, YELLOW, BLUE, MAGENTA, GRAY, RED } = COLORS;
-
-//   console.log(`${BOLD}${GREEN}Welcome to the Command Processor!${RESET}`);
-//   console.log(`Create a command file when prompted.`);
-//   console.log(`${YELLOW}Usage based on file extensions:${RESET}`);
-//   console.log(`${MAGENTA}  - ".http" or ".rest": ${GRAY}HTTP requests${RESET}`);
-//   console.log(`${BLUE}  - ".txt" or ".file": ${GRAY}File operations${RESET}`);
-//   console.log(`${GREEN}  - ".math": ${GRAY}Math calculations${RESET}`);
-//   console.log(`${RED}  - No extension: ${GRAY}Terminal commands${RESET}`);
-//   console.log(`${YELLOW}Usage based on autosave:${RESET}`);
-//   console.log(`  if (done) BOF(remove____WAIT____) && EOF(add_new_line)`);
-//   console.log(`${RED}Exit: ${GRAY}Enter exit or quit${RESET}`);
-// }
-
 function printWelcome() {
   const RESET = "\x1b[0m";
   const BOLD = "\x1b[1m";
   const GREEN = "\x1b[32m";
-  const YELLOW = "\x1b[33m";
-  const BLUE = "\x1b[34m";
-  const MAGENTA = "\x1b[35m";
-  const GRAY = "\x1b[90m";
-  const RED = "\x1b[31m";
 
   console.log(`
    ____                                          _ 
@@ -149,16 +129,7 @@ function printWelcome() {
  | |_) | "__/ _ \\ / __/ _ \\/ __/ __|/ _ \\| '__|    
  |  __/| | | (_) | (_|  __/\\__ \\__ \\ (_) | |       
  |_|   |_|  \\___/ \\___\\___||___/___/\\___/|_| `);
-  console.log(`
-  ${BOLD}${GREEN}Welcome to the Command Processor!${RESET}
-  Create files with extensions to perform specific tasks:
-  ${MAGENTA}.http${RESET}/${BLUE}.txt${RESET}/${GREEN}.math${RESET}/${RED}none${RESET} for HTTPFile/Math/Terminal ops.
-  Autosave: remove ____WAIT___ @BOF and include newline @EOF rules apply.
-  ${RED}Exit: type 'exit' or 'quit'${RESET}
-  `);
+  console.log(`${BOLD}${GREEN}Welcome to the Command Processor!${RESET}`);
 }
-
-// Call the function to display the welcome message
-// printWelcome();
 
 module.exports = { parseHttpRequest, isHttpRequest, printWelcome };
