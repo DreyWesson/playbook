@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const { handleAllRequests } = require("./helper/httpRequestHandler.js");
 const fileOperations = require("./helper/fileOps.js");
 const { handleMath, executeCommand } = require("./helper/commandExecutor.js");
